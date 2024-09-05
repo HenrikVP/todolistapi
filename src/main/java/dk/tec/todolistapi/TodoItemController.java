@@ -15,8 +15,9 @@ public class TodoItemController {
     }
 
     @PostMapping()
-    void create(@RequestBody TodoItem todoItem){
+    int create(@RequestBody TodoItem todoItem){
         repository.save(todoItem);
+        return todoItem == null ? -1 : todoItem.getId();
     }
 
     @GetMapping("/{id}")
